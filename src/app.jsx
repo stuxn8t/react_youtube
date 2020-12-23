@@ -8,7 +8,8 @@ function App() {
   const [videos, setVideos] = useState([]); // 빈 배열이 videos에 할당됨
   const [selectedVideo, setSelectedVideo] = useState(null);
   
-  
+  const apikey=process.env.REACT_APP_YOUTUBE_KEY
+
   const selectVideo = (video) => {
     setSelectedVideo(video);
   }
@@ -35,7 +36,7 @@ function App() {
     };
 
     fetch(
-      "https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyCK6BW_hCtoAO9d2dKadk6Vciy4yWDTS2U",
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${apikey}`,
        requestOptions
     )
        .then(response => response.json()) // api 요청에 대한 응답을 json으로 받음
